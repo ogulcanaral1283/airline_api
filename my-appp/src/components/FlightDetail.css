@@ -1,0 +1,103 @@
+.flight-card {
+  width: 420px;
+  margin: 2rem auto;
+  background: linear-gradient(180deg, #f9fbff 0%, #ffffff 100%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  transition: transform 0.2s ease-in-out;
+}
+
+.flight-card:hover {
+  transform: scale(1.02);
+}
+
+.flight-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #1e40af;
+  margin-bottom: 16px;
+}
+
+.flight-header .icon {
+  font-size: 28px;
+}
+
+.flight-info {
+  text-align: left;
+  margin: 0 auto;
+  padding: 8px 20px;
+  color: #333;
+}
+
+.flight-info p {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.status {
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.status.scheduled {
+  color: #0b7200;
+  background-color: #dcfce7;
+}
+
+.status.delayed {
+  color: #92400e;
+  background-color: #fef9c3;
+}
+
+.status.cancelled {
+  color: #991b1b;
+  background-color: #fee2e2;
+}
+
+.flight-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.back-btn,
+.continue-btn {
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.back-btn {
+  background-color: #9ca3af;
+  color: white;
+}
+
+.back-btn:hover {
+  background-color: #6b7280;
+}
+
+.continue-btn {
+  background-color: #2563eb;
+  color: white;
+}
+
+.continue-btn:hover {
+  background-color: #1e40af;
+}
+
+.no-flight {
+  text-align: center;
+  margin-top: 40px;
+  color: #777;
+  font-style: italic;
+}
