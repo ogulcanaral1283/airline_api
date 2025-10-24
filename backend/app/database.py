@@ -1,28 +1,27 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import os
 from dotenv import load_dotenv
+import os
 
-# .env dosyasındaki değişkenleri yükle (örn. DB_USER, DB_PASS vs.)
+# .env dosyasını yükle
 load_dotenv()
 
-# 🔐 PostgreSQL bağlantı URL'si
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql://postgres:123@localhost:5432/airline_db"
-)
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 
-# 🧱 Engine oluştur
+# PostgreSQL bağlantı URL’si
+DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+# SQLAlchemy engine, session ve base tanımı
 engine = create_engine(DATABASE_URL)
-
-# 🧩 Session yapılandırması
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# 🧬 Base sınıfı (model mirası için)
 Base = declarative_base()
 
-# 💡 FastAPI dependency (her request için yeni bir session)
+# DB oturumunu sağlayan yardımcı fonksiyon
 def get_db():
     db = SessionLocal()
     try:

@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // 👈 buraya ekliyoruz
 import "./FlightSearch.css";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 export default function FlightSearch() {
   const [flights, setFlights] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate(); // 👈 burada tanımlıyoruz
 
   useEffect(() => {
-    fetch("http://localhost:8000/flights")
+    fetch(`${API_URL}/flights`)
       .then((res) => res.json())
       .then((data) => {
         setFlights(data);

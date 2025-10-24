@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import "./PassengerInfo.css";
 
+
+const API_URL = process.env.REACT_APP_API_URL;
+
+
 export default function PassengerInfo() {
   const { flightNumber } = useParams();
   const [searchParams] = useSearchParams();
@@ -38,7 +42,7 @@ export default function PassengerInfo() {
     };
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/passengers/", {
+      const res = await fetch("${API_URL}/passengers/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

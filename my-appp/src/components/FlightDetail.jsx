@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./FlightDetail.css";
 
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function FlightDetail() {
   const { flightNumber } = useParams();
@@ -14,7 +15,7 @@ export default function FlightDetail() {
   useEffect(() => {
     async function fetchFlight() {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/flights/${flightNumber}`);
+        const res = await fetch(`${API_URL}/flights/${flightNumber}`);
         if (!res.ok) throw new Error("Uçuş bulunamadı");
         const data = await res.json();
         setFlight(data);
